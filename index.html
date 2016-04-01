@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Redit Robin Color Generator</title>
+	<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<script>
+$('document').ready(function() {
+	var colors = ['#e50000', '#db8e00', '#ccc100', '#02be01', '#0083c7', '#820080'];
+
+	$('#submit-button').click(function() {
+		var redditName = $('#reddit-name').val();
+		var result = parseInt(redditName.toLowerCase().replace(/[^a-z0-9]/g, ""), 36) % 6;
+		var resultingColor = colors[result];
+		$('#color-box').css('background-color', resultingColor);
+		$('#color-id').text(resultingColor);
+	});
+});
+</script>
+	<input id="reddit-name" type="text" />
+	<button id="submit-button">Submit</button>
+
+	<div id="color-box">
+		<div id="color-id"></div>
+	</div>
+</body>
+</html>

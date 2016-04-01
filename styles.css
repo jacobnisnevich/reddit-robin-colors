@@ -1,0 +1,12 @@
+#color-box {
+	height: 128px;
+	width: 128px;
+	position: relative;
+	margin-top: 10px;
+}
+
+#color-id {
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+}
