@@ -3,28 +3,50 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Reddit Robin Color Generator</title>
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+
 	<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<script>
-$('document').ready(function() {
+
+	<script>
+	$('document').ready(function() {
+		$('#submit-button').click(loadColor);
+		$('#reddit-name').keypress(function(e) {
+			e.preventDefault();
+			if (e.which == 13) {
+				loadColor();
+			}
+		});
+	});
+
 	var colors = ['#e50000', '#db8e00', '#ccc100', '#02be01', '#0083c7', '#820080'];
 
-	$('#submit-button').click(function() {
+	function loadColor(e) {
+		e.preventDefault();
 		var redditName = $('#reddit-name').val();
 		var result = parseInt(redditName.toLowerCase().replace(/[^a-z0-9]/g, ""), 36) % 6;
 		var resultingColor = colors[result];
 		$('#color-box').css('background-color', resultingColor);
 		$('#color-id').text(resultingColor);
-	});
-});
-</script>
-	<input id="reddit-name" type="text" />
-	<button id="submit-button">Submit</button>
+	}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<h1 id="title">Reddit Robin Color Generator</h1>
 
-	<div id="color-box">
-		<div id="color-id"></div>
+		<form class="form-inline">
+			<input id="reddit-name" class="form-control" placeholder="Type in your Reddit username" type="text" />
+			<button id="submit-button" class="btn btn-default">Submit</button>
+		</form>
+
+		<hr>
+
+		<div id="color-box">
+			<div id="color-id"></div>
+		</div>
 	</div>
 </body>
 </html>
