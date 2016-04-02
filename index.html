@@ -14,9 +14,8 @@
 	$('document').ready(function() {
 		$('#submit-button').click(loadColor);
 		$('#reddit-name').keypress(function(e) {
-			e.preventDefault();
 			if (e.which == 13) {
-				loadColor();
+				loadColor(e);
 			}
 		});
 	});
